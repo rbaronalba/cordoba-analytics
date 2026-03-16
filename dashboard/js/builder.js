@@ -217,7 +217,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
         <div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:4px">tackles + interceptaciones + recuperaciones</div>
         <div style="margin:14px 0;height:1px;background:var(--s4)"></div>
         <div style="font-family:var(--fm);font-size:9px;color:var(--t3)">Media liga: <span style="color:var(--t1)">~72.0</span></div>
-        <div style="font-family:var(--fm);font-size:9px;color:#FF8040;margin-top:4px">⚠ Ranking no disponible: métrica calculada solo para Córdoba</div>
+        <div style="font-family:var(--fm);font-size:9px;color:#FF8040;margin-top:4px">Ranking no disponible: métrica calculada solo para Córdoba</div>
       </div>
     </div>
     <div class="panel">
@@ -229,7 +229,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
           Top en tiros totales (${COR.shots}/p vs ${MED.shots.toFixed(1)} media)<br>
           ${COR.shotsInBox.toFixed(1)}/p tiros dentro del área (liga: ${MED.shotsInBox.toFixed(1)})<br>
           ${COR.bigC.toFixed(2)} grandes oc./p | conv. ${(bigCConv*100).toFixed(0)}%<br>
-          <span style="color:var(--r)">⚠ La posesión no correlaciona con pts (r=−0.17)</span><br>
+          <span style="color:var(--r)">La posesión no correlaciona con pts (r=−0.17)</span><br>
           <span style="color:var(--t3)">Datos reales de ${COR.partidos} jornadas</span>
         </div>
       </div>
@@ -390,7 +390,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
   </div>
 </div>
 <div class="wrap">
-  ${N_MISSING_XG > 0 ? '<div class="warn-box">⚠ ' + N_MISSING_XG + ' partido(s) con xG marcado como N/D: el dato no estaba disponible en Sofascore en el momento del scraping. No se usan en cálculos de xG medio.</div>' : ''}
+  ${N_MISSING_XG > 0 ? '<div class="warn-box">' + N_MISSING_XG + ' partido(s) con xG marcado como N/D: el dato no estaba disponible en Sofascore en el momento del scraping. No se usan en cálculos de xG medio.</div>' : ''}
   <div class="g2">
     <div class="panel">
       <div class="pt">Registro completo | click en columna para ordenar</div>

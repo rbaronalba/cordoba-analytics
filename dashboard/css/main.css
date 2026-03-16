@@ -399,7 +399,7 @@ nav {
   text-transform: uppercase;
   color: var(--t3);
   padding: 6px 8px;
-  text-align: right;
+  text-align: center;
   border-bottom: 1px solid var(--s4);
   cursor: pointer;
   user-select: none;
