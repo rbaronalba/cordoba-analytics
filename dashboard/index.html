@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Córdoba CF | Análisis Avanzado 25/26</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div id="tt"></div>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-dot"></div>
+    <b>CÓR<span>DOBA</span> CF</b>
+  </div>
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="showTab('overview',this)">Resumen</button>
+    <button class="tab-btn" onclick="showTab('tactical',this)">Identidad Táctica</button>
+    <button class="tab-btn" onclick="showTab('liga',this)">vs Liga</button>
+    <button class="tab-btn" onclick="showTab('montecarlo',this)">Proyección</button>
+    <button class="tab-btn" onclick="showTab('partidos',this)">Partidos</button>
+    <button class="tab-btn" onclick="showTab('metodologia',this)">Metodología</button>
+  </div>
+  <div class="data-badge" id="dataBadge">cargando...</div>
+</nav>
+
+<div id="app"></div>
+
+<!-- scripts cargados en orden: datos -> utilidades -> modelos -> render -> html -> main -->
+<script src="js/data.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/montecarlo.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/builder.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

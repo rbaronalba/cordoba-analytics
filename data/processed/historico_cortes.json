@@ -1,0 +1,166 @@
+{
+  "competition": "Segunda División",
+  "tournament_id": 54,
+  "seasons_used": 17,
+  "media_pos2_ascenso_directo": 76.2,
+  "media_pos6_playoff": 65.2,
+  "min_pos2": 69,
+  "max_pos2": 85,
+  "min_pos6": 59,
+  "max_pos6": 71,
+  "detalle": [
+    {
+      "season_id": 62048,
+      "season_name": "LaLiga 2 24/25",
+      "season_year": "24/25",
+      "pos2_team": "Elche",
+      "pos2_pts": 77,
+      "pos6_team": "Almería",
+      "pos6_pts": 69
+    },
+    {
+      "season_id": 52563,
+      "season_name": "LaLiga 2 23/24",
+      "season_year": "23/24",
+      "pos2_team": "Real Valladolid",
+      "pos2_pts": 72,
+      "pos6_team": "Real Oviedo",
+      "pos6_pts": 64
+    },
+    {
+      "season_id": 42410,
+      "season_name": "LaLiga 2 22/23",
+      "season_year": "22/23",
+      "pos2_team": "Las Palmas",
+      "pos2_pts": 72,
+      "pos6_team": "Albacete Balompié",
+      "pos6_pts": 67
+    },
+    {
+      "season_id": 37225,
+      "season_name": "LaLiga 2 21/22",
+      "season_year": "21/22",
+      "pos2_team": "Real Valladolid",
+      "pos2_pts": 81,
+      "pos6_team": "Girona FC",
+      "pos6_pts": 68
+    },
+    {
+      "season_id": 32502,
+      "season_name": "LaLiga 2 20/21",
+      "season_year": "20/21",
+      "pos2_team": "Mallorca",
+      "pos2_pts": 82,
+      "pos6_team": "Rayo Vallecano",
+      "pos6_pts": 67
+    },
+    {
+      "season_id": 24149,
+      "season_name": "LaLiga 2 19/20",
+      "season_year": "19/20",
+      "pos2_team": "Cádiz",
+      "pos2_pts": 69,
+      "pos6_team": "Elche",
+      "pos6_pts": 61
+    },
+    {
+      "season_id": 18034,
+      "season_name": "LaLiga 2 18/19",
+      "season_year": "18/19",
+      "pos2_team": "Granada",
+      "pos2_pts": 79,
+      "pos6_team": "Deportivo La Coruña",
+      "pos6_pts": 68
+    },
+    {
+      "season_id": 13670,
+      "season_name": "La Liga 2 17/18",
+      "season_year": "17/18",
+      "pos2_team": "Huesca",
+      "pos2_pts": 75,
+      "pos6_team": "Numancia",
+      "pos6_pts": 65
+    },
+    {
+      "season_id": 11913,
+      "season_name": "Segunda Division 16/17",
+      "season_year": "16/17",
+      "pos2_team": "Girona FC",
+      "pos2_pts": 70,
+      "pos6_team": "Huesca",
+      "pos6_pts": 63
+    },
+    {
+      "season_id": 10500,
+      "season_name": "Segunda Division 15/16",
+      "season_year": "15/16",
+      "pos2_team": "Deportivo Alavés",
+      "pos2_pts": 75,
+      "pos6_team": "Real Oviedo",
+      "pos6_pts": 59
+    },
+    {
+      "season_id": 8580,
+      "season_name": "Segunda Division 14/15",
+      "season_year": "14/15",
+      "pos2_team": "Sporting Gijón",
+      "pos2_pts": 82,
+      "pos6_team": "Real Zaragoza",
+      "pos6_pts": 61
+    },
+    {
+      "season_id": 6767,
+      "season_name": "Segunda Division 13/14",
+      "season_year": "13/14",
+      "pos2_team": "Deportivo La Coruña",
+      "pos2_pts": 69,
+      "pos6_team": "Las Palmas",
+      "pos6_pts": 63
+    },
+    {
+      "season_id": 4963,
+      "season_name": "Segunda Division 12/13",
+      "season_year": "12/13",
+      "pos2_team": "Villarreal",
+      "pos2_pts": 77,
+      "pos6_team": "Las Palmas",
+      "pos6_pts": 66
+    },
+    {
+      "season_id": 3503,
+      "season_name": "Segunda Division 11/12",
+      "season_year": "11/12",
+      "pos2_team": "Celta Vigo",
+      "pos2_pts": 85,
+      "pos6_team": "Córdoba",
+      "pos6_pts": 71
+    },
+    {
+      "season_id": 2897,
+      "season_name": "Liga Adelante 10/11",
+      "season_year": "10/11",
+      "pos2_team": "Rayo Vallecano",
+      "pos2_pts": 79,
+      "pos6_team": "Celta Vigo",
+      "pos6_pts": 67
+    },
+    {
+      "season_id": 2253,
+      "season_name": "Liga Adelante 09/10",
+      "season_year": "09/10",
+      "pos2_team": "Hércules CF",
+      "pos2_pts": 71,
+      "pos6_team": "Elche",
+      "pos6_pts": 63
+    },
+    {
+      "season_id": 1588,
+      "season_name": "Liga Adelante 08/09",
+      "season_year": "08/09",
+      "pos2_team": "Real Zaragoza",
+      "pos2_pts": 81,
+      "pos6_team": "Real Sociedad",
+      "pos6_pts": 67
+    }
+  ]
+}

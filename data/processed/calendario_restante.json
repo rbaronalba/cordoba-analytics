@@ -1,0 +1,100 @@
+{
+  "team": "Córdoba CF",
+  "team_id": 2850,
+  "tournament_id": 54,
+  "season_id": 77558,
+  "total_pending": 13,
+  "partidos": [
+    {
+      "match_id": 14083398,
+      "round": 30,
+      "rival": "Real Sociedad B U21",
+      "local": "L",
+      "timestamp": 1773579600
+    },
+    {
+      "match_id": 14083429,
+      "round": 31,
+      "rival": "Burgos Club de Fútbol",
+      "local": "V",
+      "timestamp": 1774184400
+    },
+    {
+      "match_id": 14083461,
+      "round": 32,
+      "rival": "Mirandés",
+      "local": "L",
+      "timestamp": 1774643400
+    },
+    {
+      "match_id": 14083510,
+      "round": 33,
+      "rival": "Deportivo La Coruña",
+      "local": "V",
+      "timestamp": 1774980000
+    },
+    {
+      "match_id": 14083522,
+      "round": 34,
+      "rival": "Cádiz",
+      "local": "V",
+      "timestamp": 1775415600
+    },
+    {
+      "match_id": 14083545,
+      "round": 35,
+      "rival": "Real Zaragoza",
+      "local": "L",
+      "timestamp": 1776020400
+    },
+    {
+      "match_id": 14081723,
+      "round": 36,
+      "rival": "Cultural Leonesa",
+      "local": "V",
+      "timestamp": 1776625200
+    },
+    {
+      "match_id": 14081745,
+      "round": 37,
+      "rival": "Sporting Gijón",
+      "local": "L",
+      "timestamp": 1777230000
+    },
+    {
+      "match_id": 14081746,
+      "round": 38,
+      "rival": "CD Castellón",
+      "local": "V",
+      "timestamp": 1777834800
+    },
+    {
+      "match_id": 14081752,
+      "round": 39,
+      "rival": "Granada",
+      "local": "L",
+      "timestamp": 1778439600
+    },
+    {
+      "match_id": 14081762,
+      "round": 40,
+      "rival": "Albacete Balompié",
+      "local": "L",
+      "timestamp": 1779044400
+    },
+    {
+      "match_id": 14081782,
+      "round": 41,
+      "rival": "Eibar",
+      "local": "V",
+      "timestamp": 1779649200
+    },
+    {
+      "match_id": 14081787,
+      "round": 42,
+      "rival": "Huesca",
+      "local": "L",
+      "timestamp": 1780254000
+    }
+  ]
+}
