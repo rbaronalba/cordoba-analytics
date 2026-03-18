@@ -13,7 +13,7 @@ Flujo:
 
 Salida:
   ../../data/raw/historico_standings.json    <- raw completo
-  ../../data/processed/historico_cortes.json <- solo pos 2, 6 + medias
+  ../../data/processed/historical_thresholds.json <- solo pos 2, 6 + medias
 
 DEPENDENCIAS
 -------------
@@ -34,7 +34,7 @@ SEASONS_URL     = f"https://www.sofascore.com/api/v1/unique-tournament/{TOURNAME
 STANDINGS_URL   = f"https://www.sofascore.com/api/v1/unique-tournament/{TOURNAMENT_ID}/season/{{}}/standings/total"
 
 OUTPUT_RAW      = "../../data/raw/historico_standings.json"
-OUTPUT_PROCESSED= "../../data/processed/historico_cortes.json"
+OUTPUT_PROCESSED= "../../data/processed/historical_thresholds.json"
 
 
 async def fetch_json(page, url: str):

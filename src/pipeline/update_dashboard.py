@@ -1,14 +1,14 @@
 """
 update_dashboard.py
 Inyecta DATOS_EMBEBIDOS, HISTORICO_EMBEBIDO y CALENDARIO_EMBEBIDO en js/data.js.
-Ejecutar después de actualizar datos_dashboard.json (tras correr analisis_segunda.ipynb).
+Ejecutar después de actualizar dashboard_data.json (tras correr process_dashboard_data.ipynb).
 """
 import json
 import re
 
-JSON_FILE      = "../../data/processed/datos_dashboard.json"
-HISTORICO_FILE = "../../data/processed/historico_cortes.json"
-CALENDARIO_FILE= "../../data/processed/calendario_restante.json"
+JSON_FILE      = "../../data/processed/dashboard_data.json"
+HISTORICO_FILE = "../../data/processed/historical_thresholds.json"
+CALENDARIO_FILE= "../../data/processed/remaining_fixtures.json"
 STATS_FILE     = "../../data/raw/segunda_division_stats.json"
 HTML_FILE      = "../../dashboard/js/data.js"
 
