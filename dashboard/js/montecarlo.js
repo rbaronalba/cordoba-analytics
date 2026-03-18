@@ -10,8 +10,8 @@ function runMonteCarlo(COR, LIGA, PARTIDOS, calendario, nSims) {
    *   5. P(W/D/L) vía matriz Poisson hasta 6 goles (renormalizada)
    */
 
-  var HOME_ADV = 1.08;
-  var MAX_GOALS = 6;
+  var HOME_ADV = HISTORICO_EMBEBIDO.home_adv || 1.08;
+  var MAX_GOALS = 8;
 
   // Poisson PMF
   function pPMF(k, lam) {

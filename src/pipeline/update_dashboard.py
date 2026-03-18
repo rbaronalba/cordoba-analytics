@@ -9,6 +9,7 @@ import re
 JSON_FILE      = "../../data/processed/datos_dashboard.json"
 HISTORICO_FILE = "../../data/processed/historico_cortes.json"
 CALENDARIO_FILE= "../../data/processed/calendario_restante.json"
+STATS_FILE     = "../../data/raw/segunda_division_stats.json"
 HTML_FILE      = "../../dashboard/js/data.js"
 
 with open(JSON_FILE, "r", encoding="utf-8") as f:
@@ -19,6 +20,26 @@ with open(HISTORICO_FILE, "r", encoding="utf-8") as f:
 
 with open(CALENDARIO_FILE, "r", encoding="utf-8") as f:
     calendario = json.load(f)
+
+with open(STATS_FILE, "r", encoding="utf-8") as f:
+    stats_raw = json.load(f)
+
+# Calcular HOME_ADV real desde xG local/visitante de todos los partidos de la temporada
+xg_home_total = 0.0
+xg_away_total = 0.0
+for match in stats_raw.get("matches", []):
+    for period_block in match.get("statistics", {}).get("statistics", []):
+        if period_block.get("period") != "ALL":
+            continue
+        for group in period_block.get("groups", []):
+            for item in group.get("statisticsItems", []):
+                if item.get("key") == "expectedGoals":
+                    xg_home_total += item.get("homeValue", 0) or 0
+                    xg_away_total += item.get("awayValue", 0) or 0
+
+xg_total = xg_home_total + xg_away_total
+home_adv = round(2 * xg_home_total / xg_total, 4) if xg_total > 0 else 1.08
+historico["home_adv"] = home_adv
 
 with open(HTML_FILE, "r", encoding="utf-8") as f:
     html = f.read()
@@ -67,4 +88,5 @@ else:
     n_pending = calendario["total_pending"]
     print(f"OK — js/data.js actualizado a J{data['CORDOBA']['partidos']} ({data['CORDOBA']['pts_total']} pts)")
     print(f"     Umbrales históricos: ascenso ≥{thr2} pts | playoff ≥{thr6} pts ({historico['seasons_used']} temporadas)")
+    print(f"     Home advantage calibrado: {home_adv} (xG local/visitante, {stats_raw.get('total_matches',0)} partidos)")
     print(f"     Calendario: {n_pending} partidos restantes inyectados")
