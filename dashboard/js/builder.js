@@ -54,21 +54,21 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
   <div class="g2">
     <div>
       <div class="insight">
-        <div class="insight-title">⚡ Dominio sin recompensa suficiente</div>
+        <div class="insight-title">Dominio sin recompensa suficiente</div>
         <div class="insight-text">El Córdoba genera <strong style="color:var(--t1)">${xgShow} xG/p</strong> (media liga: ${MED.xg.toFixed(2)}) y lidera en tiros totales con <strong style="color:var(--t1)">${COR.shots}/p</strong> vs ${MED.shots.toFixed(1)} de media. Con <strong style="color:var(--r)">${bigCTotal} grandes ocasiones</strong> en ${COR.partidos}J, solo convierte el <strong style="color:var(--r)">${(bigCConv*100).toFixed(0)}%</strong> (${bigCScored} goles). El portero rival ha detenido ${bigCMissed} ocasiones claras - ahí está la brecha.</div>
       </div>
       <div class="insight">
-        <div class="insight-title">📈 Progresión temporal clara</div>
+        <div class="insight-title">Progresión temporal clara</div>
         <div class="insight-text">PPG J1–J${t1[t1.length-1].j}: <strong style="color:var(--r)">${ppgT1.toFixed(2)}</strong> -> J${t2[0].j}–J${t2[t2.length-1].j}: <strong style="color:var(--t1)">${ppgT2.toFixed(2)}</strong> -> J${t3[0].j}–J${COR.partidos}: <strong style="color:var(--g)">${ppgT3.toFixed(2)}</strong>. Tendencia positiva y consistente. Manteniendo el último ritmo en ${CALENDARIO_EMBEBIDO.total_pending} partidos restantes: <strong style="color:var(--g)">~${Math.round(COR.pts_total + ppgT3*CALENDARIO_EMBEBIDO.total_pending)} pts totales</strong>.</div>
       </div>
     </div>
     <div>
       <div class="insight">
-        <div class="insight-title">🔬 Lo que gana partidos en Segunda</div>
+        <div class="insight-title">Lo que gana partidos en Segunda</div>
         <div class="insight-text">Correlación sobre 616 registros reales: <strong style="color:var(--t1)">la posesión correlaciona negativamente</strong> (r=−0.17). Los mejores predictores son <strong style="color:var(--g)">conversión de grandes ocasiones</strong> (r=0.426) y <strong style="color:var(--g)">tiros a puerta</strong> (r=0.294). El Córdoba tiene las ocasiones - el problema es materializarlas.</div>
       </div>
       <div class="insight">
-        <div class="insight-title">🌲 Madera y errores: el detalle que duele</div>
+        <div class="insight-title">Madera y errores: el detalle que duele</div>
         <div class="insight-text"><strong style="color:var(--t1)">${hitWoodTotal} golpes al poste/larguero</strong> en ${COR.partidos} jornadas - el Córdoba golpea el marco con más frecuencia que cualquier rival. Sumado a la baja conversión de grandes ocasiones (${(bigCConv*100).toFixed(0)}%), esto cuantifica exactamente los puntos perdidos por ineficiencia finalizadora.</div>
       </div>
     </div>
@@ -269,36 +269,42 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
 <div class="hero" style="padding-bottom:20px">
   <div style="max-width:1280px;margin:0 auto">
     <div class="hero-title" style="font-size:clamp(36px,5vw,48px)">SIMULACIÓN<br><span class="red">MONTE CARLO</span></div>
-    <div class="hero-sub">100.000 simulaciones | ${CALENDARIO_EMBEBIDO.total_pending} partidos restantes | modelo por partido: forma reciente + localía real + calidad del rival</div>
+    <div class="hero-sub">100.000 simulaciones | ${CALENDARIO_EMBEBIDO.total_pending} partidos restantes | modelo Poisson por partido | fuerzas regularizadas | localía real | calidad del rival</div>
   </div>
 </div>
 <div class="wrap">
   <div class="g2" style="margin-bottom:24px">
     <div class="panel">
       <div class="pt">Probabilidades de escenario final</div>
-      <div class="mc-row">
-        <div class="mc-label">ASCENSO DIRECTO<br><span style="color:var(--t3);font-size:8px">≥${MC.thr_direct} pts · media histórica</span></div>
-        <div class="mc-track"><div class="mc-fill" style="width:${(MC.pDirect*100).toFixed(1)}%;background:var(--g)"></div></div>
-        <div class="mc-pct" style="color:var(--g)">${(MC.pDirect*100).toFixed(1)}%</div>
-      </div>
-      <div class="mc-row">
-        <div class="mc-label">PLAYOFF TOP 6<br><span style="color:var(--t3);font-size:8px">≥${MC.thr_playoff} pts · media histórica</span></div>
-        <div class="mc-track"><div class="mc-fill" style="width:${Math.min(MC.pPlayoff*100,100).toFixed(1)}%;background:var(--t1)"></div></div>
-        <div class="mc-pct" style="color:var(--t1)">${(MC.pPlayoff*100).toFixed(1)}%</div>
-      </div>
-      <div class="mc-row">
-        <div class="mc-label">MITAD TABLA<br><span style="color:var(--t3);font-size:8px">${MC.thr_desc}–${MC.thr_playoff - 1} pts</span></div>
-        <div class="mc-track"><div class="mc-fill" style="width:${Math.min(MC.pMid*100,100).toFixed(1)}%;background:var(--b)"></div></div>
-        <div class="mc-pct" style="color:var(--b)">${(MC.pMid*100).toFixed(1)}%</div>
-      </div>
-      <div class="mc-row">
-        <div class="mc-label">SALVACIÓN<br><span style="color:var(--t3);font-size:8px">&lt;${MC.thr_desc} pts</span></div>
-        <div class="mc-track"><div class="mc-fill" style="width:${Math.min(MC.pDesc*100,100).toFixed(1)}%;background:var(--r)"></div></div>
-        <div class="mc-pct" style="color:${MC.pDesc<0.01?'var(--g)':'var(--r)'}">${(MC.pDesc*100).toFixed(1)}%</div>
-      </div>
+      ${(function(){
+        var d  = parseFloat((MC.pDirect*100).toFixed(1));
+        var po = parseFloat((MC.pPlayoff*100).toFixed(1));
+        var mi = parseFloat((MC.pMid*100).toFixed(1));
+        var de = parseFloat((100 - d - po - mi).toFixed(1));
+        return '<div class="mc-row">'
+          +'<div class="mc-label">ASCENSO DIRECTO<br><span style="color:var(--t3);font-size:8px">\u2265'+MC.thr_direct+' pts | media hist\u00f3rica</span></div>'
+          +'<div class="mc-track"><div class="mc-fill" style="width:'+d+'%;background:var(--g)"></div></div>'
+          +'<div class="mc-pct" style="color:var(--g)">'+d.toFixed(1)+'%</div>'
+          +'</div>'
+          +'<div class="mc-row">'
+          +'<div class="mc-label">PLAYOFF TOP 6<br><span style="color:var(--t3);font-size:8px">\u2265'+MC.thr_playoff+' pts | media hist\u00f3rica</span></div>'
+          +'<div class="mc-track"><div class="mc-fill" style="width:'+po+'%;background:var(--t1)"></div></div>'
+          +'<div class="mc-pct" style="color:var(--t1)">'+po.toFixed(1)+'%</div>'
+          +'</div>'
+          +'<div class="mc-row">'
+          +'<div class="mc-label">MITAD TABLA<br><span style="color:var(--t3);font-size:8px">'+MC.thr_desc+'\u2013'+(MC.thr_playoff-1)+' pts</span></div>'
+          +'<div class="mc-track"><div class="mc-fill" style="width:'+mi+'%;background:var(--b)"></div></div>'
+          +'<div class="mc-pct" style="color:var(--b)">'+mi.toFixed(1)+'%</div>'
+          +'</div>'
+          +'<div class="mc-row">'
+          +'<div class="mc-label">DESCENSO<br><span style="color:var(--t3);font-size:8px">&lt;'+MC.thr_desc+' pts</span></div>'
+          +'<div class="mc-track"><div class="mc-fill" style="width:'+de+'%;background:var(--r)"></div></div>'
+          +'<div class="mc-pct" style="color:'+(de<1?'var(--g)':'var(--r)')+'">'+de.toFixed(1)+'%</div>'
+          +'</div>';
+      })()}
       <div style="margin-top:10px;font-family:var(--fm);font-size:8px;color:var(--t3);border-top:1px solid var(--s4);padding-top:10px;line-height:2.0">
         P(V) media: ${(MC.pw_used*100).toFixed(1)}% | P(E): ${(MC.pd_used*100).toFixed(1)}% | P(D): ${((1-MC.pw_used-MC.pd_used)*100).toFixed(1)}%<br>
-        Racha ult.${MC.n_last5loc} casa: ${(MC.recent_loc.pw*100).toFixed(0)}%V/${(MC.recent_loc.pd*100).toFixed(0)}%E · ult.${MC.n_last5vis} fuera: ${(MC.recent_vis.pw*100).toFixed(0)}%V/${(MC.recent_vis.pd*100).toFixed(0)}%E
+        Racha ult.${MC.n_last5loc} casa: ${(MC.recent_loc.pw*100).toFixed(0)}%V/${(MC.recent_loc.pd*100).toFixed(0)}%E | ult.${MC.n_last5vis} fuera: ${(MC.recent_vis.pw*100).toFixed(0)}%V/${(MC.recent_vis.pd*100).toFixed(0)}%E
       </div>
       <div style="margin-top:16px">
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center">
@@ -348,7 +354,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
     </div>
   </div>
   <div class="panel">
-    <div class="pt">Calendario restante · dificultad por rival (${MC.matchProbs.length} partidos)</div>
+    <div class="pt">Calendario restante | dificultad por rival (${MC.matchProbs.length} partidos)</div>
     <div style="overflow-x:auto">
       <table class="tabla" style="width:100%">
         <thead><tr>
@@ -375,7 +381,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
       </table>
     </div>
     <div style="margin-top:8px;font-family:var(--fm);font-size:8px;color:var(--t3);line-height:1.8">
-      P(V/E/D) = probabilidad de cada resultado vía modelo Poisson · λ rival = goles esperados por el rival (att_riv × def_cor × league_xG) · dificultad = λ rival / λ Córdoba (ratio medio ${(MC.matchProbs.reduce(function(s,m){return s+m.quality;},0)/MC.matchProbs.length).toFixed(2)}; DURO &gt;1.25, MEDIO &gt;0.95, ASEQUIBLE ≤0.95) · fuerzas regularizadas con shrinkage bayesiano (factor pj/(pj+10))
+      P(V/E/D) = probabilidad de cada resultado vía modelo Poisson | λ rival = goles esperados por el rival (att_riv × def_cor × league_xG) | dificultad = λ rival / λ Córdoba (ratio medio ${(MC.matchProbs.reduce(function(s,m){return s+m.quality;},0)/MC.matchProbs.length).toFixed(2)}; DURO &gt;1.25, MEDIO &gt;0.95, ASEQUIBLE ≤0.95) | fuerzas regularizadas con shrinkage bayesiano (factor pj/(pj+10))
     </div>
   </div>
 </div>
@@ -445,15 +451,8 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
 
   <div class="meto-block">
     <h3>Simulación Monte Carlo - modelo Poisson por partido</h3>
-    <p>Se ejecutan <strong style="color:var(--t1)">100.000 simulaciones</strong> de los ${CALENDARIO_EMBEBIDO.total_pending} partidos restantes en el navegador. Para cada partido se calculan dos lambdas (goles esperados) y se obtiene P(V/E/D) mediante una <strong>matriz Poisson</strong> hasta 6 goles por equipo:</p>
-    <ul style="margin-top:10px">
-      <li><strong style="color:var(--t1)">Fuerza ofensiva</strong>: att_i = xG_i / media_xG_liga (xG acumulado de temporada, no PPG)</li>
-      <li><strong style="color:var(--t1)">Fuerza defensiva</strong>: def_i = xGA_i / media_xGA_liga (xG concedido por partido, libre de ruido aleatorio de goles)</li>
-      <li><strong style="color:var(--t1)">λ Córdoba</strong> = league_avg_xG × att_cor × def_riv × HOME_ADV(1.08 si local)</li>
-      <li><strong style="color:var(--t1)">λ rival</strong> = league_avg_xG × att_riv × def_cor × HOME_ADV(1.08 si rival local)</li>
-      <li><strong style="color:var(--t1)">Regularización</strong>: fuerzas shrinkage hacia media de liga con factor pj/(pj+10) — reduce el ruido en muestras pequeñas, converge hacia los datos reales conforme avanza la temporada</li>
-      <li><strong style="color:var(--t1)">Forma reciente</strong> (informativo, no entra en el modelo): casa ult.${MC.n_last5loc} → ${(MC.recent_loc.pw*100).toFixed(0)}%V/${(MC.recent_loc.pd*100).toFixed(0)}%E/${((1-MC.recent_loc.pw-MC.recent_loc.pd)*100).toFixed(0)}%D · fuera ult.${MC.n_last5vis} → ${(MC.recent_vis.pw*100).toFixed(0)}%V/${(MC.recent_vis.pd*100).toFixed(0)}%E/${((1-MC.recent_vis.pw-MC.recent_vis.pd)*100).toFixed(0)}%D</li>
-    </ul>
+    <p>Se ejecutan <strong style="color:var(--t1)">100.000 simulaciones</strong> de los ${CALENDARIO_EMBEBIDO.total_pending} partidos restantes. Cada partido se modela con distribución de Poisson a partir de las fuerzas ofensivas y defensivas de cada equipo (basadas en xG y xGA de temporada), con ajuste por localía y regularización bayesiana. Los umbrales de ascenso, playoff y salvación se derivan de las medias históricas de Segunda División (últimas 17 temporadas).</p>
+    <p style="margin-top:8px">Forma reciente (informativo): casa ult.${MC.n_last5loc} -> ${(MC.recent_loc.pw*100).toFixed(0)}%V / ${(MC.recent_loc.pd*100).toFixed(0)}%E / ${((1-MC.recent_loc.pw-MC.recent_loc.pd)*100).toFixed(0)}%D | fuera ult.${MC.n_last5vis} -> ${(MC.recent_vis.pw*100).toFixed(0)}%V / ${(MC.recent_vis.pd*100).toFixed(0)}%E / ${((1-MC.recent_vis.pw-MC.recent_vis.pd)*100).toFixed(0)}%D</p>
   </div>
 
   <div class="meto-block">

@@ -12,8 +12,8 @@ Flujo:
        → clasificación final → extrae pos 2, pos 6 y pos 18
 
 Salida:
-  ../../data/raw/historico_standings.json    ← raw completo
-  ../../data/processed/historico_cortes.json ← solo pos 2, 6 + medias
+  ../../data/raw/historico_standings.json    <- raw completo
+  ../../data/processed/historico_cortes.json <- solo pos 2, 6 + medias
 
 DEPENDENCIAS
 -------------

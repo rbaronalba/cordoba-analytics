@@ -40,7 +40,7 @@
   var locPoss = avg(loc,'poss'),  visPoss = avg(vis,'poss');
   var locShots= avg(loc,'shots'), visShots= avg(vis,'shots');
 
-  var gcMedia = LIGA.reduce(function(s,t){return s+t.gc;},0) / LIGA.length / COR.partidos;
+  var gcMedia = LIGA.reduce(function(s,t){return s + t.gc/t.pj;},0) / LIGA.length;
 
   // Monte Carlo
   var MC = runMonteCarlo(COR, LIGA, PARTIDOS, CALENDARIO_EMBEBIDO.partidos, 100000);
