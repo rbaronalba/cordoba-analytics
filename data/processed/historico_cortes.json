@@ -4,10 +4,13 @@
   "seasons_used": 17,
   "media_pos2_ascenso_directo": 76.2,
   "media_pos6_playoff": 65.2,
+  "media_pos18_salvacion": 48.5,
   "min_pos2": 69,
   "max_pos2": 85,
   "min_pos6": 59,
   "max_pos6": 71,
+  "min_pos18": 45,
+  "max_pos18": 51,
   "detalle": [
     {
       "season_id": 62048,
@@ -16,7 +19,9 @@
       "pos2_team": "Elche",
       "pos2_pts": 77,
       "pos6_team": "Almería",
-      "pos6_pts": 69
+      "pos6_pts": 69,
+      "pos18_team": "Real Zaragoza",
+      "pos18_pts": 51
     },
     {
       "season_id": 52563,
@@ -25,7 +30,9 @@
       "pos2_team": "Real Valladolid",
       "pos2_pts": 72,
       "pos6_team": "Real Oviedo",
-      "pos6_pts": 64
+      "pos6_pts": 64,
+      "pos18_team": "Mirandés",
+      "pos18_pts": 49
     },
     {
       "season_id": 42410,
@@ -34,7 +41,9 @@
       "pos2_team": "Las Palmas",
       "pos2_pts": 72,
       "pos6_team": "Albacete Balompié",
-      "pos6_pts": 67
+      "pos6_pts": 67,
+      "pos18_team": "Villarreal CF B U23",
+      "pos18_pts": 50
     },
     {
       "season_id": 37225,
@@ -43,7 +52,9 @@
       "pos2_team": "Real Valladolid",
       "pos2_pts": 81,
       "pos6_team": "Girona FC",
-      "pos6_pts": 68
+      "pos6_pts": 68,
+      "pos18_team": "Málaga",
+      "pos18_pts": 45
     },
     {
       "season_id": 32502,
@@ -52,7 +63,9 @@
       "pos2_team": "Mallorca",
       "pos2_pts": 82,
       "pos6_team": "Rayo Vallecano",
-      "pos6_pts": 67
+      "pos6_pts": 67,
+      "pos18_team": "CD Lugo",
+      "pos18_pts": 47
     },
     {
       "season_id": 24149,
@@ -61,7 +74,9 @@
       "pos2_team": "Cádiz",
       "pos2_pts": 69,
       "pos6_team": "Elche",
-      "pos6_pts": 61
+      "pos6_pts": 61,
+      "pos18_team": "SD Ponferradina",
+      "pos18_pts": 51
     },
     {
       "season_id": 18034,
@@ -70,7 +85,9 @@
       "pos2_team": "Granada",
       "pos2_pts": 79,
       "pos6_team": "Deportivo La Coruña",
-      "pos6_pts": 68
+      "pos6_pts": 68,
+      "pos18_team": "CD Lugo",
+      "pos18_pts": 47
     },
     {
       "season_id": 13670,
@@ -79,7 +96,9 @@
       "pos2_team": "Huesca",
       "pos2_pts": 75,
       "pos6_team": "Numancia",
-      "pos6_pts": 65
+      "pos6_pts": 65,
+      "pos18_team": "Almería",
+      "pos18_pts": 48
     },
     {
       "season_id": 11913,
@@ -88,7 +107,9 @@
       "pos2_team": "Girona FC",
       "pos2_pts": 70,
       "pos6_team": "Huesca",
-      "pos6_pts": 63
+      "pos6_pts": 63,
+      "pos18_team": "AD Alcorcón",
+      "pos18_pts": 50
     },
     {
       "season_id": 10500,
@@ -97,7 +118,9 @@
       "pos2_team": "Deportivo Alavés",
       "pos2_pts": 75,
       "pos6_team": "Real Oviedo",
-      "pos6_pts": 59
+      "pos6_pts": 59,
+      "pos18_team": "SD Ponferradina",
+      "pos18_pts": 47
     },
     {
       "season_id": 8580,
@@ -106,7 +129,9 @@
       "pos2_team": "Sporting Gijón",
       "pos2_pts": 82,
       "pos6_team": "Real Zaragoza",
-      "pos6_pts": 61
+      "pos6_pts": 61,
+      "pos18_team": "Osasuna",
+      "pos18_pts": 45
     },
     {
       "season_id": 6767,
@@ -115,7 +140,9 @@
       "pos2_team": "Deportivo La Coruña",
       "pos2_pts": 69,
       "pos6_team": "Las Palmas",
-      "pos6_pts": 63
+      "pos6_pts": 63,
+      "pos18_team": "Deportivo Alavés",
+      "pos18_pts": 51
     },
     {
       "season_id": 4963,
@@ -124,7 +151,9 @@
       "pos2_team": "Villarreal",
       "pos2_pts": 77,
       "pos6_team": "Las Palmas",
-      "pos6_pts": 66
+      "pos6_pts": 66,
+      "pos18_team": "Guadalajara",
+      "pos18_pts": 50
     },
     {
       "season_id": 3503,
@@ -133,7 +162,9 @@
       "pos2_team": "Celta Vigo",
       "pos2_pts": 85,
       "pos6_team": "Córdoba",
-      "pos6_pts": 71
+      "pos6_pts": 71,
+      "pos18_team": "Real Murcia",
+      "pos18_pts": 47
     },
     {
       "season_id": 2897,
@@ -142,7 +173,9 @@
       "pos2_team": "Rayo Vallecano",
       "pos2_pts": 79,
       "pos6_team": "Celta Vigo",
-      "pos6_pts": 67
+      "pos6_pts": 67,
+      "pos18_team": "Gimnàstic de Tarragona",
+      "pos18_pts": 49
     },
     {
       "season_id": 2253,
@@ -151,7 +184,9 @@
       "pos2_team": "Hércules CF",
       "pos2_pts": 71,
       "pos6_team": "Elche",
-      "pos6_pts": 63
+      "pos6_pts": 63,
+      "pos18_team": "Gimnàstic de Tarragona",
+      "pos18_pts": 51
     },
     {
       "season_id": 1588,
@@ -160,7 +195,9 @@
       "pos2_team": "Real Zaragoza",
       "pos2_pts": 81,
       "pos6_team": "Real Sociedad",
-      "pos6_pts": 67
+      "pos6_pts": 67,
+      "pos18_team": "Las Palmas",
+      "pos18_pts": 47
     }
   ]
 }

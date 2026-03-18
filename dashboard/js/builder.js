@@ -292,7 +292,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
         <div class="mc-pct" style="color:var(--b)">${(MC.pMid*100).toFixed(1)}%</div>
       </div>
       <div class="mc-row">
-        <div class="mc-label">DESCENSO<br><span style="color:var(--t3);font-size:8px">&lt;${MC.thr_desc} pts</span></div>
+        <div class="mc-label">SALVACIÓN<br><span style="color:var(--t3);font-size:8px">&lt;${MC.thr_desc} pts</span></div>
         <div class="mc-track"><div class="mc-fill" style="width:${Math.min(MC.pDesc*100,100).toFixed(1)}%;background:var(--r)"></div></div>
         <div class="mc-pct" style="color:${MC.pDesc<0.01?'var(--g)':'var(--r)'}">${(MC.pDesc*100).toFixed(1)}%</div>
       </div>
@@ -375,7 +375,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
       </table>
     </div>
     <div style="margin-top:8px;font-family:var(--fm);font-size:8px;color:var(--t3);line-height:1.8">
-      P(V/E/D) = probabilidad de cada resultado vía modelo Poisson · λ rival = goles esperados por el rival (att_riv × def_cor × league_xG) · dificultad = λ rival / λ Córdoba (ratio medio ${(MC.matchProbs.reduce(function(s,m){return s+m.quality;},0)/MC.matchProbs.length).toFixed(2)}; DURO &gt;1.25, MEDIO &gt;0.95, ASEQUIBLE ≤0.95) · blend: 60% racha reciente + 40% Poisson
+      P(V/E/D) = probabilidad de cada resultado vía modelo Poisson · λ rival = goles esperados por el rival (att_riv × def_cor × league_xG) · dificultad = λ rival / λ Córdoba (ratio medio ${(MC.matchProbs.reduce(function(s,m){return s+m.quality;},0)/MC.matchProbs.length).toFixed(2)}; DURO &gt;1.25, MEDIO &gt;0.95, ASEQUIBLE ≤0.95) · fuerzas regularizadas con shrinkage bayesiano (factor pj/(pj+10))
     </div>
   </div>
 </div>
@@ -451,7 +451,8 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
       <li><strong style="color:var(--t1)">Fuerza defensiva</strong>: def_i = xGA_i / media_xGA_liga (xG concedido por partido, libre de ruido aleatorio de goles)</li>
       <li><strong style="color:var(--t1)">λ Córdoba</strong> = league_avg_xG × att_cor × def_riv × HOME_ADV(1.08 si local)</li>
       <li><strong style="color:var(--t1)">λ rival</strong> = league_avg_xG × att_riv × def_cor × HOME_ADV(1.08 si rival local)</li>
-      <li><strong style="color:var(--t1)">Blend final</strong>: 60% forma reciente real (últimos 5 por localía: casa ${(MC.recent_loc.pw*100).toFixed(0)}%V/${(MC.recent_loc.pd*100).toFixed(0)}%E/${((1-MC.recent_loc.pw-MC.recent_loc.pd)*100).toFixed(0)}%D · fuera ${(MC.recent_vis.pw*100).toFixed(0)}%V/${(MC.recent_vis.pd*100).toFixed(0)}%E/${((1-MC.recent_vis.pw-MC.recent_vis.pd)*100).toFixed(0)}%D) + 40% Poisson de temporada completa</li>
+      <li><strong style="color:var(--t1)">Regularización</strong>: fuerzas shrinkage hacia media de liga con factor pj/(pj+10) — reduce el ruido en muestras pequeñas, converge hacia los datos reales conforme avanza la temporada</li>
+      <li><strong style="color:var(--t1)">Forma reciente</strong> (informativo, no entra en el modelo): casa ult.${MC.n_last5loc} → ${(MC.recent_loc.pw*100).toFixed(0)}%V/${(MC.recent_loc.pd*100).toFixed(0)}%E/${((1-MC.recent_loc.pw-MC.recent_loc.pd)*100).toFixed(0)}%D · fuera ult.${MC.n_last5vis} → ${(MC.recent_vis.pw*100).toFixed(0)}%V/${(MC.recent_vis.pd*100).toFixed(0)}%E/${((1-MC.recent_vis.pw-MC.recent_vis.pd)*100).toFixed(0)}%D</li>
     </ul>
   </div>
 

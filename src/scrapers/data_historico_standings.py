@@ -1,7 +1,7 @@
 """
 data_historico_standings.py
 ===========================
-Obtiene los puntos del 2º y 6º clasificado en Segunda División
+Obtiene los puntos del 2º, 6º y 18º clasificado en Segunda División
 de las últimas ~20 temporadas desde la API pública de Sofascore.
 
 Flujo:
@@ -9,7 +9,7 @@ Flujo:
        → lista de todas las temporadas disponibles
   2. Para cada temporada de los últimos ~20 años:
        GET /api/v1/unique-tournament/54/season/{id}/standings/total
-       → clasificación final → extrae pos 2 y pos 6
+       → clasificación final → extrae pos 2, pos 6 y pos 18
 
 Salida:
   ../../data/raw/historico_standings.json    ← raw completo
@@ -112,34 +112,43 @@ async def main():
                 "rows":        rows,
             })
 
-            # Extraer posición 2 y posición 6 (posición 1-indexed en el campo "position")
-            pts_2  = None
-            pts_6  = None
-            team_2 = None
-            team_6 = None
+            # Extraer posición 2, 6 y 18 (1-indexed en el campo "position")
+            # pos18 = último equipo que se salva del descenso (descienden pos 19-22)
+            pts_2   = None
+            pts_6   = None
+            pts_18  = None
+            team_2  = None
+            team_6  = None
+            team_18 = None
 
             for row in rows:
-                pos = row.get("position")
-                pts = row.get("points")
+                pos  = row.get("position")
+                pts  = row.get("points")
                 team = row.get("team", {}).get("name", "?")
                 if pos == 2:
-                    pts_2  = pts
-                    team_2 = team
+                    pts_2   = pts
+                    team_2  = team
                 elif pos == 6:
-                    pts_6  = pts
-                    team_6 = team
+                    pts_6   = pts
+                    team_6  = team
+                elif pos == 18:
+                    pts_18  = pts
+                    team_18 = team
 
-            print(f"  2º: {team_2} — {pts_2} pts")
-            print(f"  6º: {team_6} — {pts_6} pts")
+            print(f"  2º:  {team_2}  — {pts_2} pts")
+            print(f"  6º:  {team_6}  — {pts_6} pts")
+            print(f"  18º: {team_18} — {pts_18} pts")
 
             cortes.append({
-                "season_id":   season_id,
-                "season_name": season_name,
-                "season_year": season_year,
-                "pos2_team":   team_2,
-                "pos2_pts":    pts_2,
-                "pos6_team":   team_6,
-                "pos6_pts":    pts_6,
+                "season_id":    season_id,
+                "season_name":  season_name,
+                "season_year":  season_year,
+                "pos2_team":    team_2,
+                "pos2_pts":     pts_2,
+                "pos6_team":    team_6,
+                "pos6_pts":     pts_6,
+                "pos18_team":   team_18,
+                "pos18_pts":    pts_18,
             })
 
         await browser.close()
@@ -150,20 +159,24 @@ async def main():
 
     # ── 3. Calcular medias ────────────────────────────────────────────────────
     df = pd.DataFrame(cortes)
-    media_2 = round(float(df["pos2_pts"].dropna().mean()), 1)
-    media_6 = round(float(df["pos6_pts"].dropna().mean()), 1)
-    min_2   = int(df["pos2_pts"].dropna().min())
-    max_2   = int(df["pos2_pts"].dropna().max())
-    min_6   = int(df["pos6_pts"].dropna().min())
-    max_6   = int(df["pos6_pts"].dropna().max())
+    media_2  = round(float(df["pos2_pts"].dropna().mean()),  1)
+    media_6  = round(float(df["pos6_pts"].dropna().mean()),  1)
+    media_18 = round(float(df["pos18_pts"].dropna().mean()), 1)
+    min_2    = int(df["pos2_pts"].dropna().min())
+    max_2    = int(df["pos2_pts"].dropna().max())
+    min_6    = int(df["pos6_pts"].dropna().min())
+    max_6    = int(df["pos6_pts"].dropna().max())
+    min_18   = int(df["pos18_pts"].dropna().min())
+    max_18   = int(df["pos18_pts"].dropna().max())
 
     print("\n" + "=" * 50)
     print(f"RESULTADOS ({len(df)} temporadas)")
     print("=" * 50)
-    print(f"  2º (ascenso directo):  media={media_2}  rango [{min_2}–{max_2}]")
-    print(f"  6º (playoff):          media={media_6}  rango [{min_6}–{max_6}]")
+    print(f"  2º (ascenso directo):  media={media_2}   rango [{min_2}–{max_2}]")
+    print(f"  6º (playoff):          media={media_6}   rango [{min_6}–{max_6}]")
+    print(f"  18º (salvación):       media={media_18}  rango [{min_18}–{max_18}]")
     print("=" * 50)
-    print(df[["season_name","pos2_team","pos2_pts","pos6_team","pos6_pts"]].to_string(index=False))
+    print(df[["season_name","pos2_team","pos2_pts","pos6_team","pos6_pts","pos18_team","pos18_pts"]].to_string(index=False))
 
     # ── 4. Guardar resultados ─────────────────────────────────────────────────
     with open(OUTPUT_RAW, "w", encoding="utf-8") as f:
@@ -176,8 +189,10 @@ async def main():
         "seasons_used":  len(df),
         "media_pos2_ascenso_directo": media_2,
         "media_pos6_playoff":         media_6,
-        "min_pos2": min_2,  "max_pos2": max_2,
-        "min_pos6": min_6,  "max_pos6": max_6,
+        "media_pos18_salvacion":      media_18,
+        "min_pos2":  min_2,   "max_pos2":  max_2,
+        "min_pos6":  min_6,   "max_pos6":  max_6,
+        "min_pos18": min_18,  "max_pos18": max_18,
         "detalle": cortes,
     }
     with open(OUTPUT_PROCESSED, "w", encoding="utf-8") as f:

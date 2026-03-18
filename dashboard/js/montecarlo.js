@@ -1,13 +1,13 @@
-/*  MONTE CARLO - modelo Poisson por partido (FiveThirtyEight style)  */
+/*  MONTE CARLO - modelo Poisson por partido */
 function runMonteCarlo(COR, LIGA, PARTIDOS, calendario, nSims) {
   /*
-   * Modelo Poisson por partido (estilo FiveThirtyEight / StatsBomb):
+   * Modelo Poisson por partido:
    *   1. Fuerza ofensiva: att_i = xG_i / league_avg_xG
-   *   2. Fuerza defensiva: def_i = (gc_i/pj_i) / avg_gc_liga
-   *   3. λ_córdoba = league_avg_xG × att_cor × def_riv × [HOME_ADV si local]
+   *   2. Fuerza defensiva: def_i = xGA_i / league_avg_xGA (fallback: gc/pj)
+   *   3. Regularización bayesiana: fuerzas shrinkage → 1.0 con factor pj/(pj+10)
+   *   4. λ_córdoba = league_avg_xG × att_cor × def_riv × [HOME_ADV si local]
    *      λ_rival   = league_avg_xG × att_riv × def_cor × [HOME_ADV si rival local]
-   *   4. P(W/D/L) vía matriz Poisson hasta 6 goles
-   *   5. Blend final: 60% forma reciente (últimos 5 por localía) + 40% Poisson
+   *   5. P(W/D/L) vía matriz Poisson hasta 6 goles (renormalizada)
    */
 
   var HOME_ADV = 1.08;
@@ -52,17 +52,20 @@ function runMonteCarlo(COR, LIGA, PARTIDOS, calendario, nSims) {
     var defVal = (leagueXGA && t.xga > 0)
       ? t.xga / leagueXGA
       : (t.gc / t.pj) / avgGcPerGame;
+    var alpha = t.pj / (t.pj + 10);
     strength[t.name] = {
-      att: t.xg / leagueXG,
-      def: defVal
+      att: 1 + (t.xg / leagueXG - 1) * alpha,
+      def: 1 + (defVal - 1) * alpha
     };
   });
 
   // Fuerza del Córdoba (desde LIGA para consistencia)
-  var corStr = strength['Córdoba'] || {
-    att: COR.xg / leagueXG,
-    def: (leagueXGA && COR.xga > 0) ? COR.xga / leagueXGA : 1.0
-  };
+  var corStr = strength['Córdoba'] || (function() {
+    var att_raw = COR.xg / leagueXG;
+    var def_raw = (leagueXGA && COR.xga > 0) ? COR.xga / leagueXGA : 1.0;
+    var alpha = COR.pj / (COR.pj + 10);
+    return { att: 1 + (att_raw - 1) * alpha, def: 1 + (def_raw - 1) * alpha };
+  }());
 
   // Forma reciente por localía
   var locAll   = PARTIDOS.filter(function(p) { return p.local === 'L'; });
@@ -93,18 +96,11 @@ function runMonteCarlo(COR, LIGA, PARTIDOS, calendario, nSims) {
       : leagueXG * riv.att * corStr.def * HOME_ADV;
 
     var pois = poissonProbs(lam_cor, lam_riv);
-    var rec  = isHome ? recent_loc : recent_vis;
-
-    // 60% forma reciente + 40% Poisson
-    var pw = 0.60 * rec.pw + 0.40 * pois.pw;
-    var pd = 0.60 * rec.pd + 0.40 * pois.pd;
-    var pl = Math.max(1 - pw - pd, 0.05);
-    var tot = pw + pd + pl; pw /= tot; pd /= tot; pl /= tot;
 
     return { round: m.round, rival: m.rival, local: m.local,
              lam_cor: lam_cor, lam_riv: lam_riv,
              quality: lam_riv / Math.max(lam_cor, 0.01),
-             pw: pw, pd: pd, pl: pl };
+             pw: pois.pw, pd: pois.pd, pl: pois.pl };
   });
 
   // Simulación
@@ -123,7 +119,7 @@ function runMonteCarlo(COR, LIGA, PARTIDOS, calendario, nSims) {
 
   var THR_DIRECT  = Math.round(HISTORICO_EMBEBIDO.media_pos2_ascenso_directo);
   var THR_PLAYOFF = Math.round(HISTORICO_EMBEBIDO.media_pos6_playoff);
-  var THR_DESC    = 42;
+  var THR_DESC    = Math.round(HISTORICO_EMBEBIDO.media_pos18_salvacion);
   var pDirect = 0, pPlayoff = 0, pMid = 0, pDesc = 0;
   for (var i = 0; i < nSims; i++) {
     var v = results[i];

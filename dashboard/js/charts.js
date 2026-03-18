@@ -413,7 +413,7 @@ function renderMCDist(MC) {
   h+='<line x1="'+xS(MC.thr_playoff).toFixed(1)+'" y1="'+PAD+'" x2="'+xS(MC.thr_playoff).toFixed(1)+'" y2="'+(H-PAD)+'" stroke="#FFD600" stroke-width="1.5" stroke-dasharray="3,3"/>';
   h+='<text x="'+(xS(MC.thr_playoff)+2).toFixed(1)+'" y="'+(PAD+12)+'" fill="#FFD600" font-family="JetBrains Mono" font-size="8">Playoff</text>';
   h+='<line x1="'+xS(MC.thr_desc).toFixed(1)+'" y1="'+PAD+'" x2="'+xS(MC.thr_desc).toFixed(1)+'" y2="'+(H-PAD)+'" stroke="#FF5252" stroke-width="1" stroke-dasharray="3,3" opacity=".6"/>';
-  h+='<text x="'+(xS(MC.thr_desc)+2).toFixed(1)+'" y="'+(PAD+12)+'" fill="#FF5252" font-family="JetBrains Mono" font-size="8" opacity=".8">Descenso</text>';
+  h+='<text x="'+(xS(MC.thr_desc)+2).toFixed(1)+'" y="'+(PAD+12)+'" fill="#FF5252" font-family="JetBrains Mono" font-size="8" opacity=".8">Salvación</text>';
   svg.innerHTML = h;
   svg.querySelectorAll('rect[data-tip]').forEach(function(el){
     el.addEventListener('mouseover', function(e){ showTT(e, el.getAttribute('data-tip')); });
