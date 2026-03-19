@@ -56,7 +56,7 @@ async def main():
         browser = await p.chromium.launch(headless=True)
         page    = await browser.new_page()
 
-        # ── 1. Obtener lista de temporadas ────────────────────────────────────
+        # 1. Obtener lista de temporadas
         print("Obteniendo lista de temporadas...")
         seasons_data = await fetch_json(page, SEASONS_URL)
         if not seasons_data or "seasons" not in seasons_data:
@@ -78,13 +78,13 @@ async def main():
         for s in target_seasons:
             print(f"    {s.get('name', '?')} (id:{s['id']})")
 
-        # ── 2. Para cada temporada, descargar clasificación ───────────────────
+        # 2. Para cada temporada, descargar clasificación 
         for season in target_seasons:
             season_id   = season["id"]
             season_name = season.get("name", str(season_id))
             season_year = season.get("year", "?")
 
-            print(f"\n── Temporada {season_name} (id:{season_id}) ──────────────")
+            print(f"\nTemporada {season_name} (id:{season_id})")
             url = STANDINGS_URL.format(season_id)
             data = await fetch_json(page, url)
             await asyncio.sleep(THROTTLE)
@@ -157,7 +157,7 @@ async def main():
         print("\nERROR: No se obtuvieron datos.")
         return
 
-    # ── 3. Calcular medias ────────────────────────────────────────────────────
+    # 3. Calcular medias
     df = pd.DataFrame(cortes)
     media_2  = round(float(df["pos2_pts"].dropna().mean()),  1)
     media_6  = round(float(df["pos6_pts"].dropna().mean()),  1)
@@ -178,7 +178,7 @@ async def main():
     print("=" * 50)
     print(df[["season_name","pos2_team","pos2_pts","pos6_team","pos6_pts","pos18_team","pos18_pts"]].to_string(index=False))
 
-    # ── 4. Guardar resultados ─────────────────────────────────────────────────
+    # 4. Guardar resultados
     with open(OUTPUT_RAW, "w", encoding="utf-8") as f:
         json.dump(all_seasons_data, f, indent=2, ensure_ascii=False)
     print(f"\n✓ Raw guardado: {OUTPUT_RAW}")

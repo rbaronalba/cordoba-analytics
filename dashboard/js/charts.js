@@ -1,6 +1,4 @@
-/* ══════════════════════════════════════════
-   CHART RENDERERS
-══════════════════════════════════════════ */
+//  CHART RENDERERS
 
 function renderEvChart(PARTIDOS) {
   var svg = document.getElementById('evChart');
@@ -238,7 +236,6 @@ function renderDefensePanel(PARTIDOS, MED) {
     h += '</div>';
   });
   h += '</div>';
-  h += '<div style="margin-top:10px;font-family:var(--fm);font-size:8px;color:var(--t3)">Verde = mejor que media liga | Rojo = peor. Para salvadas y pérdidas, menos es mejor.</div>';
   el.innerHTML = h;
 }
 
@@ -246,7 +243,9 @@ function renderCorrChart(CORR) {
   var svg = document.getElementById('corrChart');
   if (!svg) return;
   var cols = ['#00E676','#00E676','#69F0AE','#B9F6CA','#CCFF90','#F4FF81','#FFFF8D','#FFD180','#FF9E80','#FF6659'];
-  var W=900,H=140,MIDLINE=70,n=CORR.length,bw=(W-60)/n,maxR=0.35,h='';
+  var W=900,H=220,MIDLINE=70,n=CORR.length,bw=(W-60)/n,maxR=0.35,h='';
+  svg.setAttribute('height', H);
+  svg.setAttribute('viewBox', '0 0 900 '+H);
   h+='<line x1="20" y1="'+MIDLINE+'" x2="'+W+'" y2="'+MIDLINE+'" stroke="#1C2A1F" stroke-width="1"/>';
   CORR.forEach(function(c,i){
     var col = cols[Math.min(i,cols.length-1)];
@@ -255,7 +254,7 @@ function renderCorrChart(CORR) {
     var y = c.r >= 0 ? MIDLINE-barH : MIDLINE;
     h+='<rect x="'+(x-bw/2+3).toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(bw-6).toFixed(1)+'" height="'+barH.toFixed(1)+'" fill="'+col+'" opacity=".85" rx="2" data-tip="'+c.label+' | r = '+c.r+'"/>';
     h+='<text x="'+x.toFixed(1)+'" y="'+(c.r>=0?y-5:y+barH+13).toFixed(1)+'" text-anchor="middle" fill="#8A9A8A" font-family="JetBrains Mono" font-size="9">'+(c.r>=0?'+':'')+c.r+'</text>';
-    h+='<text x="'+x.toFixed(1)+'" y="128" text-anchor="middle" fill="#4A6A4A" font-family="JetBrains Mono" font-size="9">'+c.label+'</text>';
+    h+='<text transform="translate('+x.toFixed(1)+',128) rotate(-65)" text-anchor="end" fill="#4A6A4A" font-family="JetBrains Mono" font-size="9">'+c.label+'</text>';
   });
   svg.innerHTML = h;
   svg.querySelectorAll('rect[data-tip]').forEach(function(el){
@@ -289,7 +288,7 @@ function renderTablaLiga(LIGA) {
   var tbl = document.getElementById('tablaLiga');
   if (!tbl) return;
   var h = '<thead><tr>'
-    +'<th>#</th><th>Equipo</th><th>PJ</th><th>Pts</th><th>GF</th><th>GC</th><th>GD</th><th>PPG</th><th>xG/p</th><th>Conv.</th>'
+    +'<th>#</th><th>Equipo</th><th>PJ</th><th>Pts</th><th>GF</th><th>GC</th><th>GD</th><th>PPG</th><th>xG/p</th><th>Conv.</th><th>Poss%</th><th>Tiros/p</th><th>TirÁrea/p</th><th>GrOc/p</th>'
     +'</tr></thead><tbody>';
   LIGA.forEach(function(eq){
     var isCor = eq.name === 'Córdoba';
@@ -307,6 +306,10 @@ function renderTablaLiga(LIGA) {
       +'<td data-val="'+eq.ppg+'" style="font-family:var(--fm);font-size:10px">'+eq.ppg.toFixed(3)+'</td>'
       +'<td data-val="'+eq.xg+'" style="font-family:var(--fm);font-size:10px">'+eq.xg+'</td>'
       +'<td data-val="'+eq.conv+'" style="font-family:var(--fm);font-size:10px;color:'+convCol+'">'+eq.conv+'</td>'
+      +'<td data-val="'+(eq.poss||0)+'" style="font-family:var(--fm);font-size:10px">'+(eq.poss?eq.poss.toFixed(1)+'%':'–')+'</td>'
+      +'<td data-val="'+(eq.shots||0)+'" style="font-family:var(--fm);font-size:10px">'+(eq.shots?eq.shots.toFixed(1):'–')+'</td>'
+      +'<td data-val="'+(eq.shotsInBox||0)+'" style="font-family:var(--fm);font-size:10px">'+(eq.shotsInBox?eq.shotsInBox.toFixed(1):'–')+'</td>'
+      +'<td data-val="'+(eq.bigC||0)+'" style="font-family:var(--fm);font-size:10px">'+(eq.bigC?eq.bigC.toFixed(2):'–')+'</td>'
       +'</tr>';
   });
   h += '</tbody>';
@@ -359,14 +362,14 @@ function renderRankMetrics(LIGA, COR) {
   var gcRank   = gcBetter + 1;
   var total    = LIGA.length;
   var items = [
-    {label:'xG por partido',    val:COR.xg.toFixed(2),         rank:rankDesc(LIGA,'xg',COR.xg),        note:'Generación ofensiva',    hasRank:true},
-    {label:'PPG',               val:COR.ppg.toFixed(3),        rank:rankDesc(LIGA,'ppg',COR.ppg),       note:'Rendimiento',            hasRank:true},
-    {label:'Conversión xG',     val:COR.conv_xg.toFixed(2),    rank:rankDesc(LIGA,'conv',COR.conv_xg),  note:'Eficiencia finalizadora', hasRank:true},
-    {label:'GC/partido',        val:gcPerPj.toFixed(2),        rank:gcRank,                             note:'Solidez defensiva',      hasRank:true},
-    {label:'Posesión media',    val:COR.poss+'%',              rank:null,                               note:'Solo dato Córdoba',      hasRank:false},
-    {label:'Tiros totales/p',   val:COR.shots.toFixed(1),      rank:null,                               note:'Solo dato Córdoba',      hasRank:false},
-    {label:'Tiros en área/p',   val:COR.shotsInBox.toFixed(2), rank:null,                               note:'Solo dato Córdoba',      hasRank:false},
-    {label:'Grandes oc./p',     val:COR.bigC.toFixed(2),       rank:null,                               note:'Solo dato Córdoba',      hasRank:false}
+    {label:'xG por partido',    val:COR.xg.toFixed(2),         rank:rankDesc(LIGA,'xg',COR.xg),           note:'Generación ofensiva',    hasRank:true},
+    {label:'PPG',               val:COR.ppg.toFixed(3),        rank:rankDesc(LIGA,'ppg',COR.ppg),          note:'Rendimiento',            hasRank:true},
+    {label:'Conversión xG',     val:COR.conv_xg.toFixed(2),    rank:rankDesc(LIGA,'conv',COR.conv_xg),     note:'Eficiencia finalizadora', hasRank:true},
+    {label:'GC/partido',        val:gcPerPj.toFixed(2),        rank:gcRank,                                note:'Solidez defensiva',      hasRank:true},
+    {label:'Posesión media',    val:COR.poss+'%',              rank:rankDesc(LIGA,'poss',COR.poss),        note:'vs media liga',          hasRank:true},
+    {label:'Tiros totales/p',   val:COR.shots.toFixed(1),      rank:rankDesc(LIGA,'shots',COR.shots),      note:'Volumen ofensivo',        hasRank:true},
+    {label:'Tiros en área/p',   val:COR.shotsInBox.toFixed(2), rank:rankDesc(LIGA,'shotsInBox',COR.shotsInBox), note:'Peligro real',      hasRank:true},
+    {label:'Grandes oc./p',     val:COR.bigC.toFixed(2),       rank:rankDesc(LIGA,'bigC',COR.bigC),        note:'Creación',               hasRank:true},
   ];
   var h = '';
   items.forEach(function(item){

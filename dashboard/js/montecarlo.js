@@ -1,14 +1,6 @@
-/*  MONTE CARLO - modelo Poisson por partido */
+// MONTE CARLO - modelo Poisson por partido
+
 function runMonteCarlo(COR, LIGA, PARTIDOS, calendario, nSims) {
-  /*
-   * Modelo Poisson por partido:
-   *   1. Fuerza ofensiva: att_i = xG_i / league_avg_xG
-   *   2. Fuerza defensiva: def_i = xGA_i / league_avg_xGA (fallback: gc/pj)
-   *   3. Regularización bayesiana: fuerzas shrinkage → 1.0 con factor pj/(pj+10)
-   *   4. λ_córdoba = league_avg_xG × att_cor × def_riv × [HOME_ADV si local]
-   *      λ_rival   = league_avg_xG × att_riv × def_cor × [HOME_ADV si rival local]
-   *   5. P(W/D/L) vía matriz Poisson hasta 6 goles (renormalizada)
-   */
 
   var HOME_ADV = HISTORICO_EMBEBIDO.home_adv || 1.08;
   var MAX_GOALS = 8;
@@ -38,12 +30,13 @@ function runMonteCarlo(COR, LIGA, PARTIDOS, calendario, nSims) {
 
   // Medias de liga
   var leagueXG = LIGA.reduce(function(s,t){ return s + t.xg; }, 0) / LIGA.length;
-  // xGA como medida defensiva (libre de ruido aleatorio de goles)
+
+  // xGA como medida defensiva
   var xgaTeams = LIGA.filter(function(t){ return t.xga > 0; });
   var leagueXGA    = xgaTeams.length > 0
     ? xgaTeams.reduce(function(s,t){ return s + t.xga; }, 0) / xgaTeams.length
     : null;
-  // fallback por si xGA no está disponible en LIGA
+    
   var avgGcPerGame = LIGA.reduce(function(s,t){ return s + t.gc/t.pj; }, 0) / LIGA.length;
 
   // Fuerza de cada equipo
@@ -59,7 +52,7 @@ function runMonteCarlo(COR, LIGA, PARTIDOS, calendario, nSims) {
     };
   });
 
-  // Fuerza del Córdoba (desde LIGA para consistencia)
+  // Fuerza del Córdoba
   var corStr = strength['Córdoba'] || (function() {
     var att_raw = COR.xg / leagueXG;
     var def_raw = (leagueXGA && COR.xga > 0) ? COR.xga / leagueXGA : 1.0;

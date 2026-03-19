@@ -36,7 +36,7 @@ import json
 import pandas as pd
 from playwright.async_api import async_playwright
 
-# ── Configuración ──────────────────────────────────────────────────────────────
+# Configuración
 
 TOURNAMENT_ID  = 54       # LaLiga 2
 SEASON_ID      = 77558    # Temporada 25/26
@@ -57,8 +57,7 @@ OUTPUT_PARQUET = "../../data/processed/segunda_division_stats.parquet"
 # Períodos que queremos extraer y el sufijo que llevarán en el parquet
 PERIODS = ["ALL", "1ST", "2ND"]
 
-
-# ── Helpers de red ─────────────────────────────────────────────────────────────
+# Helpers de red
 
 async def fetch_json(page, url: str):
     """
@@ -75,7 +74,7 @@ async def fetch_json(page, url: str):
         return None
 
 
-# ── Extracción de estadísticas ──────────────────────────────────────────────────
+# Extracción de estadísticas
 
 def extract_stats_for_team(stats_block: list, is_home: bool) -> dict:
     """
@@ -148,7 +147,7 @@ def extract_stats_for_team(stats_block: list, is_home: bool) -> dict:
     return result
 
 
-# ── Scraper principal ───────────────────────────────────────────────────────────
+# Scraper principal
 
 async def main():
     all_matches  = []
@@ -160,7 +159,7 @@ async def main():
 
         for round_num in range(1, TOTAL_ROUNDS + 1):
 
-            print(f"\n── Jornada {round_num} ──────────────────────────")
+            print(f"\ Jornada {round_num}")
             round_data = await fetch_json(page, BASE_ROUND_URL.format(round_num))
 
             if not round_data or "events" not in round_data:
@@ -203,7 +202,7 @@ async def main():
 
         await browser.close()
 
-    # ── Guardar JSON crudo (fuente de verdad) ───────────────────────────────────
+    # Guardar JSON crudo (fuente de verdad)
     output_json = {
         "competition":    "Segunda División 25/26",
         "tournament_id":  TOURNAMENT_ID,
@@ -215,7 +214,7 @@ async def main():
         json.dump(output_json, f, indent=2, ensure_ascii=False)
     print(f"\n✓ JSON guardado: {OUTPUT_JSON} ({len(all_matches)} partidos)")
 
-    # ── Construir parquet ───────────────────────────────────────────────────────
+    # Construir parquet
     rows = build_rows(all_matches)
     if not rows:
         print("ERROR: No se generaron filas. Revisar estructura del JSON.")
@@ -223,7 +222,7 @@ async def main():
 
     df = pd.DataFrame(rows)
 
-    # Convertir timestamp a datetime UTC para facilitar uso en Power BI / pandas
+    # Convertir timestamp a datetime UTC 
     if "start_timestamp" in df.columns:
         df["match_date"] = pd.to_datetime(df["start_timestamp"], unit="s", utc=True)
 

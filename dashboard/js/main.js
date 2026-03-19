@@ -1,4 +1,5 @@
-/* ══ MAIN - punto de entrada ══ */
+// MAIN - punto de entrada 
+
 (function() {
   var DATA = DATOS_EMBEBIDOS;
 
@@ -12,7 +13,6 @@
   var CORR     = DATA.CORRELACIONES;
   var N_MISSING_XG = PARTIDOS.filter(function(p) { return p.xg === null; }).length;
 
-  // xG medio real (sin nulls) - valor canónico usado en todo el dashboard
   COR.xg_calc = avgValid(PARTIDOS, 'xg');
 
   // puntos acumulados
@@ -23,7 +23,7 @@
     p.ptAcum = acum;
   });
 
-  // tramos - ppgOf definida UNA sola vez en el scope correcto
+  // tramos - ppgOf 
   function ppgOf(arr) { return arr.reduce(function(s,p){return s+p.pts;},0)/arr.length; }
 
   var t1 = PARTIDOS.slice(0, 9), t2 = PARTIDOS.slice(9, 18), t3 = PARTIDOS.slice(18);

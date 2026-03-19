@@ -1,6 +1,5 @@
-/* 
-   HTML BUILDER
- */
+//HTML BUILDER
+
 function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
     ppgT1, ppgT2, ppgT3,
     loc, vis, locPPG, visPPG, locGF, visGF, locGC, visGC,
@@ -80,7 +79,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
       <div style="margin-bottom:20px">
         <div class="hbar-row"><div class="hbar-label">J1–J${t1[t1.length-1].j}</div>${bar(ppgT1,3,'var(--r)')}<div class="hbar-val" style="color:var(--r)">${ppgT1.toFixed(2)}</div></div>
         <div class="hbar-row"><div class="hbar-label">J${t2[0].j}–J${t2[t2.length-1].j}</div>${bar(ppgT2,3,'var(--t1)')}<div class="hbar-val">${ppgT2.toFixed(2)}</div></div>
-        <div class="hbar-row"><div class="hbar-label">J19–J${COR.partidos}</div>${bar(ppgT3,3,'var(--g)')}<div class="hbar-val" style="color:var(--g)">${ppgT3.toFixed(2)}</div></div>
+        <div class="hbar-row"><div class="hbar-label">J${t3[0].j}–J${COR.partidos}</div>${bar(ppgT3,3,'var(--g)')}<div class="hbar-val" style="color:var(--g)">${ppgT3.toFixed(2)}</div></div>
       </div>
       <div style="border-top:1px solid var(--s4);padding-top:12px">
         <div class="hbar-row"><div class="hbar-label">Local PPG</div>${bar(locPPG,3,'var(--b)')}<div class="hbar-val" style="color:var(--b)">${locPPG.toFixed(2)}</div></div>
@@ -190,9 +189,9 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
 
   <div class="panel" style="margin-bottom:24px">
     <div class="pt">¿Qué gana partidos en Segunda División? | Correlación de Pearson con puntos (n=616 partidos reales)</div>
-    <svg id="corrChart" width="100%" height="140" viewBox="0 0 900 140"></svg>
+    <svg id="corrChart" width="100%" height="220" viewBox="0 0 900 220"></svg>
     <div style="margin-top:8px;font-family:var(--fm);font-size:9px;color:var(--t3)">
-      Correlación positiva = más de esa métrica -> más puntos. Con n=616, |r|>0.08 es significativo al 95%. La posesión correlaciona negativamente - poseer más no garantiza ganar en Segunda.
+      Correlación positiva = más de esa métrica -> más puntos. Con n=616, |r| > 0.08 es significativo al 95%. La posesión correlaciona negativamente - poseer más no garantiza ganar en Segunda.
     </div>
   </div>
 
@@ -217,7 +216,6 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
         <div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:4px">tackles + interceptaciones + recuperaciones</div>
         <div style="margin:14px 0;height:1px;background:var(--s4)"></div>
         <div style="font-family:var(--fm);font-size:9px;color:var(--t3)">Media liga: <span style="color:var(--t1)">~72.0</span></div>
-        <div style="font-family:var(--fm);font-size:9px;color:#FF8040;margin-top:4px">Ranking no disponible: métrica calculada solo para Córdoba</div>
       </div>
     </div>
     <div class="panel">
@@ -259,7 +257,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
   </div>
   <div class="panel" style="margin-bottom:24px">
     <div class="pt">Ranking de métricas avanzadas | posición del Córdoba en la liga</div>
-    <div id="rankMetrics" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-top:8px"></div>
+    <div id="rankMetrics" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-top:8px;row-gap:16px"></div>
   </div>
 </div>
 </div>

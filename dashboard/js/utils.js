@@ -1,4 +1,4 @@
-/* ══ TOOLTIP ══ */
+/*   TOOLTIP   */
 var tt = document.getElementById('tt');
 function showTT(e, html) { tt.innerHTML = html; tt.style.display = 'block'; }
 function hideTT() { tt.style.display = 'none'; }
@@ -7,7 +7,7 @@ document.addEventListener('mousemove', function(e) {
   tt.style.top  = (e.clientY - 30) + 'px';
 });
 
-/* ══ TABS ══ */
+/*   TABS   */
 function showTab(id, btn) {
   document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
   document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -15,13 +15,12 @@ function showTab(id, btn) {
   if (btn) btn.classList.add('active');
 }
 
-/* ══ HELPERS ══ */
+/*   HELPERS   */
 function avg(arr, f) {
   var vals = arr.map(function(p) { return (p[f] !== null && p[f] !== undefined) ? p[f] : 0; });
   return vals.reduce(function(s, v) { return s + v; }, 0) / arr.length;
 }
 function avgValid(arr, f) {
-  /* media ignorando null/undefined - usar siempre para xG y métricas con huecos */
   var valid = arr.filter(function(p) { return p[f] !== null && p[f] !== undefined; });
   if (!valid.length) return null;
   return valid.reduce(function(s, p) { return s + p[f]; }, 0) / valid.length;
@@ -40,7 +39,7 @@ function rankAsc(liga, field, corVal) {
   return better + 1;
 }
 
-/* ══ SORT TABLE ══ */
+/*   SORT TABLE   */
 function makeSortable(tableId) {
   var tbl = document.getElementById(tableId);
   if (!tbl) return;
