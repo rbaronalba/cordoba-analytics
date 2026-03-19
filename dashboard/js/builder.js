@@ -379,7 +379,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
       </table>
     </div>
     <div style="margin-top:8px;font-family:var(--fm);font-size:8px;color:var(--t3);line-height:1.8">
-      P(V/E/D) = probabilidad de cada resultado vía modelo Poisson | λ rival = goles esperados por el rival (att_riv × def_cor × league_xG) | dificultad = λ rival / λ Córdoba (ratio medio ${(MC.matchProbs.reduce(function(s,m){return s+m.quality;},0)/MC.matchProbs.length).toFixed(2)}; DURO &gt;1.25, MEDIO &gt;0.95, ASEQUIBLE ≤0.95) | fuerzas regularizadas con shrinkage bayesiano (factor pj/(pj+10))
+      P(V/E/D) = probabilidad de cada resultado vía modelo Poisson | λ rival = goles esperados por el rival (att_riv x def_cor x league_xG) | dificultad = λ rival / λ Córdoba (ratio medio ${(MC.matchProbs.reduce(function(s,m){return s+m.quality;},0)/MC.matchProbs.length).toFixed(2)}; DURO &gt;1.25, MEDIO &gt;0.95, ASEQUIBLE ≤0.95) | fuerzas regularizadas con shrinkage bayesiano (factor pj/(pj+10))
     </div>
   </div>
 </div>
@@ -433,16 +433,16 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
 <div class="wrap">
   <div class="meto-block">
     <h3>Pipeline de datos</h3>
-    <p style="margin-top:14px">El scraping se realiza jornada a jornada con <span class="code">playwright.async_api</span> y throttling de 0.5s entre peticiones. Para cada partido de los 22 equipos de la categoría se obtienen estadísticas avanzadas por período (ALL, 1ST, 2ND) mediante el endpoint <span class="code">/api/v1/event/{id}/statistics</span>. El resultado es un parquet de 638 filas (2 filas por partido, una por equipo) con 41 keys de estadísticas avanzadas, que permite calcular medias de liga, rankings y correlaciones sobre toda la competición.</p>
+    <p style="margin-top:14px">El scraping se realiza jornada a jornada. Para cada partido de los 22 equipos de la categoría se obtienen estadísticas avanzadas por período (ALL, 1ST, 2ND), lo que permite calcular medias de liga, rankings y correlaciones sobre toda la competición.</p>
   </div>
 
   <div class="meto-block">
     <h3>Fuentes de datos</h3>
     <ul>
-      <li>Resultados y estadísticas: endpoint público de SofaScore (temporada 77558, torneo 54 = LaLiga 2)</li>
+      <li>Resultados y estadísticas: endpoint público de SofaScore</li>
       <li>xG calculado por SofaScore con su modelo propio (posición de remate + tipo + situación de juego)</li>
       <li>Clasificación: construida a partir de todos los partidos de la temporada, ordenada por pts -> DG -> GF</li>
-      <li>Correlaciones: calculadas sobre ${LIGA.length * COR.partidos} registros (${LIGA.length} equipos × ${COR.partidos} jornadas) con correlación de Pearson</li>
+      <li>Correlaciones: calculadas sobre ${LIGA.length * COR.partidos} registros (${LIGA.length} equipos x ${COR.partidos} jornadas) con correlación de Pearson</li>
       <li>Medias de liga: calculadas directamente desde los datos de cada partido para los ${LIGA.length} equipos, no estimadas</li>
     </ul>
   </div>
@@ -450,7 +450,6 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
   <div class="meto-block">
     <h3>Simulación Monte Carlo - modelo Poisson por partido</h3>
     <p>Se ejecutan <strong style="color:var(--t1)">100.000 simulaciones</strong> de los ${CALENDARIO_EMBEBIDO.total_pending} partidos restantes. Cada partido se modela con distribución de Poisson a partir de las fuerzas ofensivas y defensivas de cada equipo (basadas en xG y xGA de temporada), con ajuste por localía y regularización bayesiana. Los umbrales de ascenso, playoff y salvación se derivan de las medias históricas de Segunda División (últimas 17 temporadas).</p>
-    <p style="margin-top:8px">Forma reciente (informativo): casa ult.${MC.n_last5loc} -> ${(MC.recent_loc.pw*100).toFixed(0)}%V / ${(MC.recent_loc.pd*100).toFixed(0)}%E / ${((1-MC.recent_loc.pw-MC.recent_loc.pd)*100).toFixed(0)}%D | fuera ult.${MC.n_last5vis} -> ${(MC.recent_vis.pw*100).toFixed(0)}%V / ${(MC.recent_vis.pd*100).toFixed(0)}%E / ${((1-MC.recent_vis.pw-MC.recent_vis.pd)*100).toFixed(0)}%D</p>
   </div>
 
   <div class="meto-block">
@@ -468,7 +467,7 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
     <ul>
       <li>Scraping: <span class="code">Python 3</span> + <span class="code">playwright.async_api</span></li>
       <li>Procesado: <span class="code">pandas</span> + <span class="code">pyarrow</span></li>
-      <li>Visualización: HTML/CSS/JS - SVG custom sin dependencias externas</li>
+      <li>Visualización: HTML/CSS/JS</li>
       <li>Monte Carlo: implementación nativa JS</li>
     </ul>
   </div>
