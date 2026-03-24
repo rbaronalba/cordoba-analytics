@@ -576,3 +576,41 @@ function renderAdvStats(PARTIDOS, MED, COR) {
   }
   el.innerHTML = h;
 }
+
+function renderTablaProyecciones(mcAll) {
+  var tbl = document.getElementById('tablaProyecciones');
+  if (!tbl) return;
+
+  var h = '<thead><tr>'
+    +'<th>#</th><th>Equipo</th><th>Pts</th>'
+    +'<th>Ascenso dir.</th><th>Playoff</th><th>Salvación</th><th>Descenso</th>'
+    +'</tr></thead><tbody>';
+
+  mcAll.forEach(function(t) {
+    var isCor = t.name === 'Córdoba';
+    var zones = t.pos<=2?'var(--g)':t.pos<=6?'var(--t1)':t.pos>=20?'var(--r)':'var(--t3)';
+    var d  = (t.pDirect*100).toFixed(1);
+    var po = (t.pPlayoff*100).toFixed(1);
+    var sa = (t.pMid*100).toFixed(1);
+    var de = (t.pDesc*100).toFixed(1);
+    var noData = t.pending === 0;
+
+    h += '<tr class="data-row'+(isCor?' highlight':'')+'"">'
+      +'<td data-val="'+t.pos+'"><span class="zona-bar" style="background:'+zones+'"></span>'+t.pos+'</td>'
+      +'<td data-val="'+t.name+'">'+t.name+'</td>'
+      +'<td data-val="'+t.pts+'" style="font-family:var(--fm);font-size:13px;font-weight:700">'+t.pts+'</td>';
+
+    if (noData) {
+      h += '<td colspan="4" style="font-family:var(--fm);font-size:9px;color:var(--t3);text-align:center">sin calendario</td>';
+    } else {
+      h += '<td data-val="'+t.pDirect+'" style="font-family:var(--fm);font-size:11px">'+d+'%</td>'
+        +'<td data-val="'+t.pPlayoff+'" style="font-family:var(--fm);font-size:11px">'+po+'%</td>'
+        +'<td data-val="'+t.pMid+'" style="font-family:var(--fm);font-size:11px">'+sa+'%</td>'
+        +'<td data-val="'+t.pDesc+'" style="font-family:var(--fm);font-size:11px">'+de+'%</td>';
+    }
+    h += '</tr>';
+  });
+
+  h += '</tbody>';
+  tbl.innerHTML = h;
+}

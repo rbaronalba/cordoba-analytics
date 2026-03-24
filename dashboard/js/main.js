@@ -9,6 +9,33 @@
   var PARTIDOS = DATA.PARTIDOS;
   var LIGA     = DATA.LIGA;
   var MED      = DATA.LIGA_MEDIAS;
+
+  // Re-ordenar LIGA aplicando desempate correcto:
+  // 1) Puntos  2) Goles en enfrentamientos directos  3) Gol average global
+  (function() {
+    // Construir mapa H2H desde los partidos jugados de la liga
+    var h2h = {};
+    (PARTIDOS_LIGA_EMBEBIDO || []).forEach(function(m) {
+      var k = m.h + '|' + m.a;
+      if (!h2h[k]) h2h[k] = { gh: 0, ga: 0 };
+      h2h[k].gh += m.gh;
+      h2h[k].ga += m.ga;
+    });
+    function golesH2H(nameA, nameB) {
+      var gf = 0;
+      var kH = nameA + '|' + nameB; if (h2h[kH]) gf += h2h[kH].gh;
+      var kA = nameB + '|' + nameA; if (h2h[kA]) gf += h2h[kA].ga;
+      return gf;
+    }
+    LIGA.sort(function(a, b) {
+      if (b.pts !== a.pts) return b.pts - a.pts;
+      var hd = golesH2H(b.name, a.name) - golesH2H(a.name, b.name);
+      if (hd !== 0) return hd;
+      return (b.gf - b.gc) - (a.gf - a.gc);
+    });
+    // Reasignar posiciones según el nuevo orden
+    LIGA.forEach(function(t, i) { t.pos = i + 1; });
+  })();
   var COR      = DATA.CORDOBA;
   var CORR     = DATA.CORRELACIONES;
   var N_MISSING_XG = PARTIDOS.filter(function(p) { return p.xg === null; }).length;
@@ -42,8 +69,10 @@
 
   var gcMedia = LIGA.reduce(function(s,t){return s + t.gc/t.pj;},0) / LIGA.length;
 
-  // Monte Carlo
+  // Monte Carlo - Córdoba
   var MC = runMonteCarlo(COR, LIGA, PARTIDOS, CALENDARIO_EMBEBIDO.partidos, 100000);
+
+  var MC_ALL = runMonteCarloAll(LIGA, CALENDARIO_LIGA_EMBEBIDO, 20000);
 
   var corEntry = LIGA.find(function(t) { return t.name === 'Córdoba'; });
   var corPos = corEntry ? corEntry.pos : '?';
@@ -82,6 +111,8 @@
   renderScatter(LIGA);
   renderRankMetrics(LIGA, COR);
   renderMCDist(MC);
+  renderTablaProyecciones(MC_ALL);
+  makeSortable('tablaProyecciones');
   renderPartidosTable(PARTIDOS);
   renderShotsChart(PARTIDOS);
   renderAdvStats(PARTIDOS, MED, COR);

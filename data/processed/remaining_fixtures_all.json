@@ -1,0 +1,1337 @@
+{
+  "season_id": 77558,
+  "tournament_id": 54,
+  "total_rounds": 42,
+  "played_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "pending_rounds": [
+    10,
+    25,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42
+  ],
+  "teams": {
+    "Real Sociedad B U21": [
+      {
+        "round": 10,
+        "rival": "Huesca",
+        "local": "L"
+      },
+      {
+        "round": 32,
+        "rival": "Almería",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Eibar",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Sporting Gijón",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "AD Ceuta",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Real Racing Club",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Real Valladolid",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Burgos Club de Fútbol",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "Huesca",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Mirandés",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Albacete Balompié",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Cultural Leonesa",
+        "local": "L"
+      }
+    ],
+    "Huesca": [
+      {
+        "round": 10,
+        "rival": "Real Sociedad B U21",
+        "local": "V"
+      },
+      {
+        "round": 32,
+        "rival": "Granada",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Cultural Leonesa",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Las Palmas",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "Deportivo La Coruña",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "Eibar",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "Real Zaragoza",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "Real Racing Club",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Real Sociedad B U21",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "Leganés",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "CD Castellón",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "Córdoba",
+        "local": "V"
+      }
+    ],
+    "AD Ceuta": [
+      {
+        "round": 25,
+        "rival": "Córdoba",
+        "local": "L"
+      },
+      {
+        "round": 32,
+        "rival": "Cádiz",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "Burgos Club de Fútbol",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "Eibar",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "Real Sociedad B U21",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "Real Zaragoza",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "Real Racing Club",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "Sporting Gijón",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "CD Castellón",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "Málaga",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "FC Andorra",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Albacete Balompié",
+        "local": "L"
+      }
+    ],
+    "Córdoba": [
+      {
+        "round": 25,
+        "rival": "AD Ceuta",
+        "local": "V"
+      },
+      {
+        "round": 32,
+        "rival": "Mirandés",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "Deportivo La Coruña",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "Cádiz",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "Real Zaragoza",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "Cultural Leonesa",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "Sporting Gijón",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "CD Castellón",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Granada",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "Albacete Balompié",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Eibar",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Huesca",
+        "local": "L"
+      }
+    ],
+    "CD Castellón": [
+      {
+        "round": 31,
+        "rival": "Cultural Leonesa",
+        "local": "L"
+      },
+      {
+        "round": 32,
+        "rival": "Albacete Balompié",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Almería",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Granada",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Mirandés",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Burgos Club de Fútbol",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Málaga",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Córdoba",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "AD Ceuta",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Cádiz",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Huesca",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Eibar",
+        "local": "L"
+      }
+    ],
+    "Cultural Leonesa": [
+      {
+        "round": 31,
+        "rival": "CD Castellón",
+        "local": "V"
+      },
+      {
+        "round": 32,
+        "rival": "FC Andorra",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "Huesca",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "Real Valladolid",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Granada",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Córdoba",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Mirandés",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Cádiz",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "Albacete Balompié",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Eibar",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Burgos Club de Fútbol",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "Real Sociedad B U21",
+        "local": "V"
+      }
+    ],
+    "Mirandés": [
+      {
+        "round": 32,
+        "rival": "Córdoba",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Albacete Balompié",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Real Zaragoza",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "CD Castellón",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "Deportivo La Coruña",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "Cultural Leonesa",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "Almería",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Eibar",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "Real Sociedad B U21",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "Granada",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "Leganés",
+        "local": "V"
+      }
+    ],
+    "Cádiz": [
+      {
+        "round": 32,
+        "rival": "AD Ceuta",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Real Valladolid",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "Córdoba",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "FC Andorra",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "Sporting Gijón",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "Las Palmas",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "Cultural Leonesa",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Deportivo La Coruña",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "CD Castellón",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "Leganés",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "Real Racing Club",
+        "local": "V"
+      }
+    ],
+    "Granada": [
+      {
+        "round": 32,
+        "rival": "Huesca",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "Las Palmas",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "CD Castellón",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "Cultural Leonesa",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "Albacete Balompié",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "Almería",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "Real Zaragoza",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Córdoba",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Burgos Club de Fútbol",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Mirandés",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Sporting Gijón",
+        "local": "L"
+      }
+    ],
+    "Real Valladolid": [
+      {
+        "round": 32,
+        "rival": "Burgos Club de Fútbol",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "Cádiz",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Cultural Leonesa",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "Eibar",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "FC Andorra",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "Real Sociedad B U21",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "Las Palmas",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Real Zaragoza",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "Real Racing Club",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "Deportivo La Coruña",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "Almería",
+        "local": "V"
+      }
+    ],
+    "Burgos Club de Fútbol": [
+      {
+        "round": 32,
+        "rival": "Real Valladolid",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "AD Ceuta",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Albacete Balompié",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "Sporting Gijón",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "CD Castellón",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "Deportivo La Coruña",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "Real Sociedad B U21",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Almería",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "Granada",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "Cultural Leonesa",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "FC Andorra",
+        "local": "L"
+      }
+    ],
+    "Málaga": [
+      {
+        "round": 32,
+        "rival": "Leganés",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "FC Andorra",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "Deportivo La Coruña",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "Las Palmas",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "Almería",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "CD Castellón",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "Eibar",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Sporting Gijón",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "AD Ceuta",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "Real Racing Club",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "Real Zaragoza",
+        "local": "V"
+      }
+    ],
+    "Leganés": [
+      {
+        "round": 32,
+        "rival": "Málaga",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Real Zaragoza",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Almería",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "Albacete Balompié",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "Las Palmas",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "FC Andorra",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "Deportivo La Coruña",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Real Racing Club",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "Huesca",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Cádiz",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Mirandés",
+        "local": "L"
+      }
+    ],
+    "Albacete Balompié": [
+      {
+        "round": 32,
+        "rival": "CD Castellón",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "Mirandés",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "Burgos Club de Fútbol",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Leganés",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Granada",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Eibar",
+        "local": "L"
+      },
+      {
+        "round": 38,
+        "rival": "FC Andorra",
+        "local": "V"
+      },
+      {
+        "round": 39,
+        "rival": "Cultural Leonesa",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "Córdoba",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "Real Sociedad B U21",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "AD Ceuta",
+        "local": "V"
+      }
+    ],
+    "Sporting Gijón": [
+      {
+        "round": 32,
+        "rival": "Deportivo La Coruña",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "Real Racing Club",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "Real Sociedad B U21",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Burgos Club de Fútbol",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Cádiz",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Córdoba",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "AD Ceuta",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "Málaga",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Real Zaragoza",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "Almería",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "Granada",
+        "local": "V"
+      }
+    ],
+    "Deportivo La Coruña": [
+      {
+        "round": 32,
+        "rival": "Sporting Gijón",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Córdoba",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Málaga",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Huesca",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Mirandés",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Burgos Club de Fútbol",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Leganés",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "Cádiz",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "FC Andorra",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Real Valladolid",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Las Palmas",
+        "local": "L"
+      }
+    ],
+    "Eibar": [
+      {
+        "round": 32,
+        "rival": "Las Palmas",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "Real Sociedad B U21",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "AD Ceuta",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Real Valladolid",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Huesca",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Albacete Balompié",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Málaga",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "Mirandés",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Cultural Leonesa",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "Córdoba",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "CD Castellón",
+        "local": "V"
+      }
+    ],
+    "Las Palmas": [
+      {
+        "round": 32,
+        "rival": "Eibar",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Granada",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Huesca",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Málaga",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Leganés",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Cádiz",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Real Valladolid",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "FC Andorra",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Almería",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "Real Zaragoza",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "Deportivo La Coruña",
+        "local": "V"
+      }
+    ],
+    "FC Andorra": [
+      {
+        "round": 32,
+        "rival": "Cultural Leonesa",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Málaga",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "Real Racing Club",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Cádiz",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Real Valladolid",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Leganés",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Albacete Balompié",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "Las Palmas",
+        "local": "L"
+      },
+      {
+        "round": 40,
+        "rival": "Deportivo La Coruña",
+        "local": "V"
+      },
+      {
+        "round": 41,
+        "rival": "AD Ceuta",
+        "local": "L"
+      },
+      {
+        "round": 42,
+        "rival": "Burgos Club de Fútbol",
+        "local": "V"
+      }
+    ],
+    "Real Zaragoza": [
+      {
+        "round": 32,
+        "rival": "Real Racing Club",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "Leganés",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "Mirandés",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Córdoba",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "AD Ceuta",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Huesca",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Granada",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "Real Valladolid",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Sporting Gijón",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Las Palmas",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Málaga",
+        "local": "L"
+      }
+    ],
+    "Real Racing Club": [
+      {
+        "round": 32,
+        "rival": "Real Zaragoza",
+        "local": "V"
+      },
+      {
+        "round": 33,
+        "rival": "Sporting Gijón",
+        "local": "L"
+      },
+      {
+        "round": 34,
+        "rival": "FC Andorra",
+        "local": "V"
+      },
+      {
+        "round": 35,
+        "rival": "Almería",
+        "local": "L"
+      },
+      {
+        "round": 36,
+        "rival": "Real Sociedad B U21",
+        "local": "V"
+      },
+      {
+        "round": 37,
+        "rival": "AD Ceuta",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Huesca",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "Leganés",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Real Valladolid",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Málaga",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Cádiz",
+        "local": "L"
+      }
+    ],
+    "Almería": [
+      {
+        "round": 32,
+        "rival": "Real Sociedad B U21",
+        "local": "L"
+      },
+      {
+        "round": 33,
+        "rival": "CD Castellón",
+        "local": "V"
+      },
+      {
+        "round": 34,
+        "rival": "Leganés",
+        "local": "L"
+      },
+      {
+        "round": 35,
+        "rival": "Real Racing Club",
+        "local": "V"
+      },
+      {
+        "round": 36,
+        "rival": "Málaga",
+        "local": "L"
+      },
+      {
+        "round": 37,
+        "rival": "Granada",
+        "local": "V"
+      },
+      {
+        "round": 38,
+        "rival": "Mirandés",
+        "local": "L"
+      },
+      {
+        "round": 39,
+        "rival": "Burgos Club de Fútbol",
+        "local": "V"
+      },
+      {
+        "round": 40,
+        "rival": "Las Palmas",
+        "local": "L"
+      },
+      {
+        "round": 41,
+        "rival": "Sporting Gijón",
+        "local": "V"
+      },
+      {
+        "round": 42,
+        "rival": "Real Valladolid",
+        "local": "L"
+      }
+    ]
+  }
+}

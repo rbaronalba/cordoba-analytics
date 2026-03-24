@@ -382,6 +382,13 @@ function buildHTML(PARTIDOS, LIGA, MED, COR, CORR, MC,
       P(V/E/D) = probabilidad de cada resultado vía modelo Poisson | λ rival = goles esperados por el rival (att_riv x def_cor x league_xG) | dificultad = λ rival / λ Córdoba (ratio medio ${(MC.matchProbs.reduce(function(s,m){return s+m.quality;},0)/MC.matchProbs.length).toFixed(2)}; DURO &gt;1.25, MEDIO &gt;0.95, ASEQUIBLE ≤0.95) | fuerzas regularizadas con shrinkage bayesiano (factor pj/(pj+10))
     </div>
   </div>
+
+  <div class="panel" style="margin-top:4px">
+    <div class="pt">Proyección final de liga</div>
+    <div style="overflow-x:auto">
+      <table class="tabla" id="tablaProyecciones"></table>
+    </div>
+  </div>
 </div>
 </div>
 

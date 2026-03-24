@@ -426,7 +426,7 @@ nav {
 .tabla td {
   padding: 7px 8px;
   border-bottom: 1px solid rgba(255, 255, 255, .025);
-  text-align: right;
+  text-align: center;
   color: var(--t2);
   font-size: 12px
 }
